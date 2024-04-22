@@ -19,6 +19,7 @@ import com.cjt2325.cameralibrary.util.FileUtil;
 import com.marvhong.videoeditor.R;
 import com.marvhong.videoeditor.base.BaseActivity;
 import java.io.File;
+import java.util.Objects;
 
 /**
  * @author LLhon
@@ -47,9 +48,7 @@ public class VideoCameraActivity extends BaseActivity {
     @Override
     protected void initView() {
         //设置视频保存路径
-        mJCameraView.setSaveVideoPath(
-            Environment.getExternalStorageDirectory().getPath() + File.separator
-                + "videoeditor" + File.separator + "small_video");
+        mJCameraView.setSaveVideoPath(Objects.requireNonNull(this.getExternalFilesDir("small_video")).getPath());
         mJCameraView.setMinDuration(3000); //设置最短录制时长
         mJCameraView.setDuration(10000); //设置最长录制时长
         mJCameraView.setFeatures(JCameraView.BUTTON_STATE_ONLY_RECORDER);
